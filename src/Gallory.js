@@ -29,6 +29,7 @@ function Gallory() {
     useEffect(()=>{
         const timer = setTimeout(()=>{
             setLoading(false)
+            console.log('topened')
         }, 3000)
         return clearTimeout(timer)
     })

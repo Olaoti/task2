@@ -12,13 +12,7 @@ function Gallery() {
     const handleImageLoad = () => {
       
     }
-    setInterval(()=>{
-      if(total<3){
-        setTotal(total+1)
-        console.log(total)
-      }
-     
-    },[total])
+   
     useEffect(() => {
       const loadedImages = [];
       List?.forEach((imageObj) => {
