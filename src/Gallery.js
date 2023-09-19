@@ -4,7 +4,6 @@ import Navbar from './components/Navbar'
 import List from './components/List'
 import Card from './components/Card.js'
 
-import { useDrag, useDrop } from 'react-dnd'
 
 function Gallery() {
    const [selected, setSelected] = useState('')

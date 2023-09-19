@@ -3,7 +3,7 @@ import { useDrag, useDrop } from 'react-dnd'
 
 
 function Card({alt,src, id, index,moveImage}) {
-    const ref = React.useRef(null);
+    const ref = useRef(null);
     const [, drop] = useDrop({
       accept: "image",
       hover: (item, monitor) => {

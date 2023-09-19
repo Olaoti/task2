@@ -14,6 +14,18 @@ import {
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+} from "@clerk/clerk-react";
+  
+
+if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
+const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 
 const router = createBrowserRouter([
   {
@@ -37,8 +49,16 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DndProvider backend={HTML5Backend}>
-      <RouterProvider router={router} />
+      <DndProvider backend={HTML5Backend}>
+    <ClerkProvider publishableKey={clerkPubKey}>
+    <SignedIn>
+        <div>Hi, you are signed in</div>
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+        <RouterProvider router={router} />
+    </ClerkProvider>
     </DndProvider>
   </React.StrictMode>
 );
