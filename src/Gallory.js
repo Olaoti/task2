@@ -19,6 +19,7 @@ function Gallory() {
           img.src = imageObj.image;
           img.onload = () => {
             loadedImages.push(imageObj.id);
+            console.log(loadedImages)
             if (loadedImages.length === totalImages) {
               setLoading(false)
             }
