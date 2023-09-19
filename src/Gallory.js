@@ -19,14 +19,19 @@ function Gallory() {
           img.src = imageObj.image;
           img.onload = () => {
             loadedImages.push(imageObj.id);
-            console.log(loadedImages)
             if (loadedImages.length >= totalImages) {
               setLoading(false)
             }
           };
         });
       }, [totalImages]);
-    
+
+    useEffect(()=>{
+        const timer = setTimeout(()=>{
+            setLoading(false)
+        }, 3000)
+        return clearTimeout(timer)
+    })
       if(loading){
         return (
           <div className="loading-spin">

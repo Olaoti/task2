@@ -7,11 +7,18 @@ import Card from './components/Card.js'
 
 function Gallery() {
   const [loading, setLoading] = useState(true)
-  
+  const [total, setTotal] = useState(0)
   const totalImages = Math.floor((List?.length)/4);
     const handleImageLoad = () => {
       
     }
+    setInterval(()=>{
+      if(total<3){
+        setTotal(total+1)
+        console.log(total)
+      }
+     
+    },[total])
     useEffect(() => {
       const loadedImages = [];
       List?.forEach((imageObj) => {
@@ -25,7 +32,12 @@ function Gallery() {
         };
       });
     }, [totalImages]);
-
+    useEffect(()=>{
+      const timer = setTimeout(()=>{
+          setLoading(false)
+      }, 3000)
+      return clearTimeout(timer)
+  })
 
    const [selected, setSelected] = useState('')
   const [filteredList, setFilteredList] = useState()
