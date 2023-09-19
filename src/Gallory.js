@@ -26,13 +26,14 @@ function Gallory() {
         });
       }, [totalImages]);
 
-    useEffect(()=>{
-        const timer = setTimeout(()=>{
-            setLoading(false)
-            console.log('topened')
-        }, 3000)
-        return clearTimeout(timer)
-    })
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          setLoading(false);
+        }, 3000);
+    
+        return () => clearTimeout(timer);
+      }, []);
+
       if(loading){
         return (
           <div className="loading-spin">

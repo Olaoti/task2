@@ -26,12 +26,14 @@ function Gallery() {
         };
       });
     }, [totalImages]);
-    useEffect(()=>{
-      const timer = setTimeout(()=>{
-          setLoading(false)
-      }, 3000)
-      return clearTimeout(timer)
-  })
+
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+  
+      return () => clearTimeout(timer);
+    }, []);
 
    const [selected, setSelected] = useState('')
   const [filteredList, setFilteredList] = useState()
