@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import Gallery from './Gallery';
+import Signup from './Signup';
+import Login from './Login';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Signup from './Signup';
-import Login from './Login';
+
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 
 const router = createBrowserRouter([
@@ -34,7 +37,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <DndProvider backend={HTML5Backend}>
+      <RouterProvider router={router} />
+    </DndProvider>
   </React.StrictMode>
 );
 

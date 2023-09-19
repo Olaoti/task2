@@ -35,6 +35,27 @@
                 }
             }
         }
+        .images-sect{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            gap: 4rem;
+            img{
+                width: 100%;
+                aspect-ratio: 5/6;
+                object-fit: cover;
+            }
+        }
+    }
+}
+@media screen and (max-width:1000px) {
+    .gallery{
+        &_body{
+            padding: 4rem 3rem 4rem;
+            .images-sect{
+                gap: 1.7rem;
+            }
+        }
     }
 }
 @media screen and (max-width:700px) {
@@ -46,6 +67,15 @@
             }
             input{
                 font-size: 1.1rem;
+            }
+            .tabs{
+                div{
+                    font-size: 1rem;
+                }
+            }
+            .images-sect{
+                grid-template-columns: 1fr 1fr;
+                gap: 1.6rem;
             }
         }
     }
