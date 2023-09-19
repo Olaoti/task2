@@ -44,6 +44,12 @@ function Gallory() {
 
   return (
     <div className='gallery'>
+         {(loading)&&(
+      <div className="loading-spin">
+      <div className="spinner">
+      </div>
+    </div>
+      )}
         <Navbar/>
       <div className='gallery_body'>
         <h1>Explore + more</h1>

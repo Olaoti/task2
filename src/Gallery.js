@@ -63,15 +63,15 @@ const moveImage = React.useCallback((dragIndex, hoverIndex) => {
     return clonedCards;
   });
 }, []);
-  if(loading){
-    return (
+
+  return (
+    <div className='gallery'>
+      {(loading)&&(
       <div className="loading-spin">
       <div className="spinner">
       </div>
-    </div>)
-  }
-  return (
-    <div className='gallery'>
+    </div>
+      )}
         <Navbar/>
         <div className='gallery_body'>
             <h1>Explore gallery</h1>
