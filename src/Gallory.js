@@ -9,7 +9,7 @@ function Gallory() {
 
     const [loading, setLoading] = useState(true)
     
-    const totalImages = List?.length;
+    const totalImages = Math.floor((List?.length)/4);
       const handleImageLoad = () => {
       }
       useEffect(() => {
@@ -20,7 +20,7 @@ function Gallory() {
           img.onload = () => {
             loadedImages.push(imageObj.id);
             console.log(loadedImages)
-            if (loadedImages.length === totalImages) {
+            if (loadedImages.length >= totalImages) {
               setLoading(false)
             }
           };

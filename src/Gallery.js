@@ -8,7 +8,7 @@ import Card from './components/Card.js'
 function Gallery() {
   const [loading, setLoading] = useState(true)
   
-  const totalImages = List?.length;
+  const totalImages = Math.floor((List?.length)/4);
     const handleImageLoad = () => {
       
     }
@@ -19,7 +19,7 @@ function Gallery() {
         img.src = imageObj.image;
         img.onload = () => {
           loadedImages.push(imageObj.id);
-          if (loadedImages.length === totalImages) {
+          if (loadedImages.length >= totalImages) {
             setLoading(false)
           }
         };
