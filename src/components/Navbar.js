@@ -18,15 +18,12 @@ function Navbar() {
           </div>
       </div>
       <div className={`nav-links ${show?('display'):('nodisplay')}`}>
+        <Link to="/overview">
+          <h5 className='overview'>Overview</h5>
+        </Link>
         <Link to="/gallery">
           <h5 className='gallery'>Gallery</h5>
         </Link>
-        <Link to='/login'>
-          <h5>Log in</h5>
-        </Link>
-        <Link to='/signup'>
-          <button>Sign up</button>
-      </Link>
       </div>
     </div>
   )

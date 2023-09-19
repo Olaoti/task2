@@ -2,7 +2,7 @@ import React,{useRef} from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 
 
-function Card({alt,src, id, index,moveImage}) {
+function Card({alt,src, id, index,moveImage, onLoad}) {
     const ref = useRef(null);
     const [, drop] = useDrop({
       accept: "image",
@@ -52,8 +52,8 @@ function Card({alt,src, id, index,moveImage}) {
     drag(drop(ref));
       
   return (
-    <div className='card' key={id} ref={ref} style={isDragging?(dragstyle):(nodrag)}>
-      <img src={src} alt={alt} className='img'/>
+    <div className='card' ref={ref} style={isDragging?(dragstyle):(nodrag)}>
+      <img src={src} alt={alt} className='img' onLoad={onLoad}/>
     </div>
   )
 }

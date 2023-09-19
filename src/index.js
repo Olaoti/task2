@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
-import App from './App';
+import App from './App.js';
 import Gallery from './Gallery';
-import Signup from './Signup';
-import Login from './Login';
+import Gallory from './Gallory';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -33,17 +32,22 @@ const router = createBrowserRouter([
     element: <div><App/></div>,
   },
   {
-    path: "/signup",
-    element: <div><Signup/></div>,
+    path: "/overview",
+    element: <div><Gallory/></div>,
   },
   {
-    path: "/login",
-    element: <div><Login/></div>,
-  },
-  {
-    path: "/gallery",
-    element: <div><Gallery/></div>,
-  },
+    path:"/gallery",
+    element:
+    <>
+    <SignedIn>
+      <Gallery />
+    </SignedIn>
+      <SignedOut>
+      <RedirectToSignIn />
+    </SignedOut>
+  </>
+  }
+  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -51,13 +55,9 @@ root.render(
   <React.StrictMode>
       <DndProvider backend={HTML5Backend}>
     <ClerkProvider publishableKey={clerkPubKey}>
-    <SignedIn>
-        <div>Hi, you are signed in</div>
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
-        <RouterProvider router={router} />
+    <RouterProvider router={router} >
+
+    </RouterProvider>
     </ClerkProvider>
     </DndProvider>
   </React.StrictMode>

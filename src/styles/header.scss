@@ -12,6 +12,7 @@
     h1{
         font-size: 6rem;
         letter-spacing: 1.6px;
+        text-transform: capitalize;
     }
     .line{
         width: 5rem;
@@ -43,7 +44,7 @@
 }
 @media screen and (max-width:600px) {
     .header{
-        padding: 14rem 2.4rem 10rem;
+        padding: 11rem 2.4rem 8rem;
         h1{
             font-size: 3.5rem;
             letter-spacing: 1.1px;

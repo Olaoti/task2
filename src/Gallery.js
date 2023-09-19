@@ -6,13 +6,34 @@ import Card from './components/Card.js'
 
 
 function Gallery() {
+  const [loading, setLoading] = useState(true)
+  
+  const totalImages = List?.length;
+    const handleImageLoad = () => {
+      
+    }
+    useEffect(() => {
+      const loadedImages = [];
+      List?.forEach((imageObj) => {
+        const img = new Image();
+        img.src = imageObj.image;
+        img.onload = () => {
+          loadedImages.push(imageObj.id);
+          if (loadedImages.length === totalImages) {
+            setLoading(false)
+          }
+        };
+      });
+    }, [totalImages]);
+
+
    const [selected, setSelected] = useState('')
   const [filteredList, setFilteredList] = useState()
 const filterClick = (e)=>{
     setSelected(e.target.id)
 }
 const search = (e)=>{
-  setSelected(e.target.value)
+  setSelected((e.target.value).toLowerCase())
 }
 useEffect(()=>{
   setFilteredList(List?.filter((sublist)=>{
@@ -34,13 +55,19 @@ const moveImage = React.useCallback((dragIndex, hoverIndex) => {
     return clonedCards;
   });
 }, []);
-
+  if(loading){
+    return (
+      <div className="loading-spin">
+      <div className="spinner">
+      </div>
+    </div>)
+  }
   return (
     <div className='gallery'>
         <Navbar/>
         <div className='gallery_body'>
             <h1>Explore gallery</h1>
-            <input type='search' placeholder='Search gallery...' onInput={search}/>
+            <input type='search' placeholder='Search! Lady, beards...' onInput={search}/>
             <div className='tabs' onClick={filterClick}>
                 <div id='' className={`${selected===''&&'active'}`}>All</div>
                 <div id='male' className={`${selected==='male'&&'active'}`}>Male</div>
@@ -50,7 +77,7 @@ const moveImage = React.useCallback((dragIndex, hoverIndex) => {
             <div className='images-sect'>
               {filteredList?.map((sublist, index)=>{
                 return <>
-                <Card key={sublist?.id} id={sublist?.id} src={sublist?.image} alt={sublist?.title} index={index} moveImage={moveImage}/>
+                <Card key={sublist?.id} id={sublist?.id} src={sublist?.image} alt={sublist?.title} index={index} moveImage={moveImage} onLoad={handleImageLoad}/>
                 </>
               })}
             </div>
